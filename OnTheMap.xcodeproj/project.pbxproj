@@ -8,20 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		38FAABB220349917007F3263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABB120349917007F3263 /* AppDelegate.swift */; };
-		38FAABB420349917007F3263 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABB320349917007F3263 /* ViewController.swift */; };
+		38FAABB420349917007F3263 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABB320349917007F3263 /* AddLocationViewController.swift */; };
 		38FAABB720349917007F3263 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FAABB520349917007F3263 /* Main.storyboard */; };
 		38FAABB920349918007F3263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38FAABB820349918007F3263 /* Assets.xcassets */; };
 		38FAABBC20349918007F3263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FAABBA20349918007F3263 /* LaunchScreen.storyboard */; };
+		38FAABC62034A571007F3263 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABC52034A571007F3263 /* LoginViewController.swift */; };
+		38FAABC82034ACC7007F3263 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABC72034ACC7007F3263 /* Constants.swift */; };
+		38FAABCA2034AEB0007F3263 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABC92034AEB0007F3263 /* Extensions.swift */; };
+		38FAABCF2034BACF007F3263 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABCE2034BACF007F3263 /* MainTabBarController.swift */; };
+		38FAABD12034E09A007F3263 /* LocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD02034E09A007F3263 /* LocationsTableViewController.swift */; };
+		38FAABD42034E628007F3263 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD32034E628007F3263 /* LocationTableViewCell.swift */; };
+		38FAABD62034EE3B007F3263 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD52034EE3B007F3263 /* AlertController.swift */; };
+		38FAABD82034F9E3007F3263 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD72034F9E3007F3263 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		38FAABAE20349917007F3263 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FAABB120349917007F3263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		38FAABB320349917007F3263 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		38FAABB320349917007F3263 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		38FAABB620349917007F3263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38FAABB820349918007F3263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38FAABBB20349918007F3263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38FAABBD20349918007F3263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38FAABC52034A571007F3263 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		38FAABC72034ACC7007F3263 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		38FAABC92034AEB0007F3263 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		38FAABCE2034BACF007F3263 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		38FAABD02034E09A007F3263 /* LocationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsTableViewController.swift; sourceTree = "<group>"; };
+		38FAABD32034E628007F3263 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		38FAABD52034EE3B007F3263 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		38FAABD72034F9E3007F3263 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +70,54 @@
 		38FAABB020349917007F3263 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				38FAABCD2034B13C007F3263 /* Utils */,
+				38FAABCC2034B111007F3263 /* Assets */,
+				38FAABCB2034B0B8007F3263 /* View Controllers */,
 				38FAABB120349917007F3263 /* AppDelegate.swift */,
-				38FAABB320349917007F3263 /* ViewController.swift */,
-				38FAABB520349917007F3263 /* Main.storyboard */,
-				38FAABB820349918007F3263 /* Assets.xcassets */,
-				38FAABBA20349918007F3263 /* LaunchScreen.storyboard */,
 				38FAABBD20349918007F3263 /* Info.plist */,
 			);
 			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		38FAABCB2034B0B8007F3263 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				38FAABD22034E5F7007F3263 /* TableView */,
+				38FAABB320349917007F3263 /* AddLocationViewController.swift */,
+				38FAABD72034F9E3007F3263 /* MapViewController.swift */,
+				38FAABC52034A571007F3263 /* LoginViewController.swift */,
+				38FAABCE2034BACF007F3263 /* MainTabBarController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		38FAABCC2034B111007F3263 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				38FAABB820349918007F3263 /* Assets.xcassets */,
+				38FAABB520349917007F3263 /* Main.storyboard */,
+				38FAABBA20349918007F3263 /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		38FAABCD2034B13C007F3263 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				38FAABC72034ACC7007F3263 /* Constants.swift */,
+				38FAABC92034AEB0007F3263 /* Extensions.swift */,
+				38FAABD52034EE3B007F3263 /* AlertController.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		38FAABD22034E5F7007F3263 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				38FAABD02034E09A007F3263 /* LocationsTableViewController.swift */,
+				38FAABD32034E628007F3263 /* LocationTableViewCell.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +192,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38FAABB420349917007F3263 /* ViewController.swift in Sources */,
+				38FAABCA2034AEB0007F3263 /* Extensions.swift in Sources */,
+				38FAABD62034EE3B007F3263 /* AlertController.swift in Sources */,
+				38FAABD42034E628007F3263 /* LocationTableViewCell.swift in Sources */,
+				38FAABD82034F9E3007F3263 /* MapViewController.swift in Sources */,
+				38FAABC62034A571007F3263 /* LoginViewController.swift in Sources */,
+				38FAABCF2034BACF007F3263 /* MainTabBarController.swift in Sources */,
+				38FAABB420349917007F3263 /* AddLocationViewController.swift in Sources */,
+				38FAABD12034E09A007F3263 /* LocationsTableViewController.swift in Sources */,
 				38FAABB220349917007F3263 /* AppDelegate.swift in Sources */,
+				38FAABC82034ACC7007F3263 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
