@@ -41,6 +41,17 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func logIn(){        
-        self.performSegue(withIdentifier: Strings.goToMainNavigationControllerSegueID, sender: self)
+        guard let email = emailTextField.text, let password = passwordTextField.text else {return}
+        
+        if(!email.isEmpty && !password.isEmpty){
+            self.performSegue(withIdentifier: Strings.goToMainNavigationControllerSegueID, sender: self)
+        }else{
+            AlertController.showAlert(title: "", message: Strings.EmptyEmailOrPasswordMessage, viewController: self)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        emailTextField.text?.removeAll()
+        passwordTextField.text?.removeAll()
     }
 }

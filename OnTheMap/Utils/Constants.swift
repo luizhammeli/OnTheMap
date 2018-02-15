@@ -15,6 +15,7 @@ struct Strings{
     
     static let invalidLink = "Invalid Link"
     static let OK = "Ok"
+    static let EmptyEmailOrPasswordMessage = "Empty Email or Password"
     
     //Segue ID
     static let goToMainNavigationControllerSegueID = "goToMainNavigationController"
