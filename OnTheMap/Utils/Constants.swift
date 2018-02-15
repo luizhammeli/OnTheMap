@@ -18,6 +18,7 @@ struct Strings{
     static let EmptyEmailOrPasswordMessage = "Empty Email or Password"
     static let LocationNotFoundMessage = "Must Enter a Location"
     static let LocationNotFoundTitleMessage = "Location Not Found"
+    static let LoginErrorDefaultMessage = "Login Error"
     
     //Segue ID
     static let goToMainNavigationControllerSegueID = "goToMainNavigationController"

@@ -16,9 +16,14 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
     }
     
-    @IBAction func logout(){        
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func logout(){
+        UdacityClient.shared.udacityLogout { (success, error) in
+            if(success){
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
+    
     @IBAction func addLocation(_ sender: Any) {
         self.performSegue(withIdentifier: Strings.goToAddLocationSegueID, sender: self)
     }

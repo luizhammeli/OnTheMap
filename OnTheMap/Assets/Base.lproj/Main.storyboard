@@ -71,6 +71,9 @@
                                     <constraint firstAttribute="height" constant="190" id="EJT-EW-di6"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="m02-Xu-rZd">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -78,6 +81,7 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="135"/>
                             </constraint>
                             <constraint firstItem="rzX-lZ-CzT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9vo-fT-kkm"/>
+                            <constraint firstItem="m02-Xu-rZd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KMA-61-eXp"/>
                             <constraint firstItem="Wz2-wN-mVw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="Ld3-a5-xNa">
                                 <variation key="heightClass=compact-widthClass=compact" constant="135"/>
                             </constraint>
@@ -87,10 +91,12 @@
                             <constraint firstItem="rzX-lZ-CzT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="sJ3-eC-Y2C">
                                 <variation key="heightClass=compact-widthClass=compact" constant="25"/>
                             </constraint>
+                            <constraint firstItem="m02-Xu-rZd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="thb-q0-Jka"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="m02-Xu-rZd" id="Vzs-Gl-txn"/>
                         <outlet property="emailTextField" destination="vOR-yg-liD" id="w74-t0-Q9L"/>
                         <outlet property="loginButton" destination="qxT-Dy-eTF" id="Yxw-02-Xzz"/>
                         <outlet property="passwordTextField" destination="koR-eW-mjK" id="XIA-54-0Pw"/>

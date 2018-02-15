@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class LoginViewController: UIViewController {
     
     func setUpViews(){
         loginButton.layer.cornerRadius = 6
+        hideActivityIndicator(true)
         emailTextField.setUpTextFieldPlaceHolder()
         passwordTextField.setUpTextFieldPlaceHolder()
         setUpSignUpButton()
@@ -42,9 +44,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func logIn(){        
         guard let email = emailTextField.text, let password = passwordTextField.text else {return}
-        
         if(!email.isEmpty && !password.isEmpty){
-            self.performSegue(withIdentifier: Strings.goToMainNavigationControllerSegueID, sender: self)
+            hideActivityIndicator(false)
+            UdacityClient.shared.udacityDefaultLogin(email, password, completionHandler: finishLogin)
         }else{
             AlertController.showAlert(title: "", message: Strings.EmptyEmailOrPasswordMessage, viewController: self)
         }
@@ -57,5 +59,21 @@ class LoginViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func finishLogin(success: Bool, error: String?){
+        DispatchQueue.main.async {
+            self.hideActivityIndicator(true)
+            if(success){
+                self.performSegue(withIdentifier: Strings.goToMainNavigationControllerSegueID, sender: self)
+            }else{
+                AlertController.showAlert(title: "", message: error, viewController: self)
+            }
+        }
+    }
+    
+    func hideActivityIndicator(_ hide: Bool){
+        hide ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
+        self.activityIndicator.isHidden = hide
     }
 }
