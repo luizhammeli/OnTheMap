@@ -54,4 +54,8 @@ class LoginViewController: UIViewController {
         emailTextField.text?.removeAll()
         passwordTextField.text?.removeAll()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

@@ -20,6 +20,7 @@
 		38FAABD42034E628007F3263 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD32034E628007F3263 /* LocationTableViewCell.swift */; };
 		38FAABD62034EE3B007F3263 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD52034EE3B007F3263 /* AlertController.swift */; };
 		38FAABD82034F9E3007F3263 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD72034F9E3007F3263 /* MapViewController.swift */; };
+		73B180DD2035A87E00637762 /* FinishAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B180DC2035A87E00637762 /* FinishAddLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		38FAABD32034E628007F3263 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		38FAABD52034EE3B007F3263 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		38FAABD72034F9E3007F3263 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		73B180DC2035A87E00637762 /* FinishAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishAddLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +84,8 @@
 		38FAABCB2034B0B8007F3263 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				73B180DB2035A85100637762 /* AddLocation */,
 				38FAABD22034E5F7007F3263 /* TableView */,
-				38FAABB320349917007F3263 /* AddLocationViewController.swift */,
 				38FAABD72034F9E3007F3263 /* MapViewController.swift */,
 				38FAABC52034A571007F3263 /* LoginViewController.swift */,
 				38FAABCE2034BACF007F3263 /* MainTabBarController.swift */,
@@ -118,6 +120,15 @@
 				38FAABD32034E628007F3263 /* LocationTableViewCell.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		73B180DB2035A85100637762 /* AddLocation */ = {
+			isa = PBXGroup;
+			children = (
+				38FAABB320349917007F3263 /* AddLocationViewController.swift */,
+				73B180DC2035A87E00637762 /* FinishAddLocationViewController.swift */,
+			);
+			path = AddLocation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73B180DD2035A87E00637762 /* FinishAddLocationViewController.swift in Sources */,
 				38FAABCA2034AEB0007F3263 /* Extensions.swift in Sources */,
 				38FAABD62034EE3B007F3263 /* AlertController.swift in Sources */,
 				38FAABD42034E628007F3263 /* LocationTableViewCell.swift in Sources */,

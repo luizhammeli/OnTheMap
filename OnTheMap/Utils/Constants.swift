@@ -16,10 +16,13 @@ struct Strings{
     static let invalidLink = "Invalid Link"
     static let OK = "Ok"
     static let EmptyEmailOrPasswordMessage = "Empty Email or Password"
+    static let LocationNotFoundMessage = "Must Enter a Location"
+    static let LocationNotFoundTitleMessage = "Location Not Found"
     
     //Segue ID
     static let goToMainNavigationControllerSegueID = "goToMainNavigationController"
     static let goToAddLocationSegueID = "goToAddLocation"
+    static let FinishAddLocation = "finishAddLocation"
     
     //Cell ID
     static let LocationsTableViewControllerCellID = "cellID"

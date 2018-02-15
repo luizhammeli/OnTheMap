@@ -34,12 +34,15 @@ class LocationsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let url = URL(string: "") else {
+        guard let url = URL(string: "https://www.udacity.com") else {
             AlertController.showAlert(title: "", message: Strings.invalidLink, viewController: self)
+            self.tableView.deselectRow(at: indexPath, animated: true)
             return
         }
         
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        UIApplication.shared.open(url, options: [:], completionHandler: { (true) in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        })
     }
 
 }
