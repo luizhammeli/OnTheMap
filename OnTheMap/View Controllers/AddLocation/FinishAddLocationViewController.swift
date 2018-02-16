@@ -26,6 +26,7 @@ class FinishAddLocationViewController: UIViewController {
     @IBAction func finishAddLocation(_ sender: Any) {
         
     }
+    
     @IBAction func goToAddLocationViewController(){
         self.navigationController?.popViewController(animated: true)
     }

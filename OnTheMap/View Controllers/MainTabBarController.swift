@@ -18,9 +18,7 @@ class MainTabBarController: UITabBarController {
     
     @IBAction func logout(){
         UdacityClient.shared.udacityLogout { (success, error) in
-            if(success){
-                self.dismiss(animated: true, completion: nil)
-            }
+            self.finishLogoutHandler(success, error)
         }
     }
     
@@ -29,5 +27,16 @@ class MainTabBarController: UITabBarController {
     }
     @IBAction func refreshMapViewController(_ sender: Any) {
         NotificationCenter.default.post(name: MainTabBarController.updateMapViewControllerNotificationName, object: nil)
+    }
+    
+    func finishLogoutHandler(_ success: Bool, _ error: String?){
+        DispatchQueue.main.async {
+            if(success){
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                guard let error = error else {return}
+                AlertController.showAlert(title: "", message: error, viewController: self)
+            }
+        }
     }
 }

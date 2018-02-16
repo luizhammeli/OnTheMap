@@ -36,8 +36,19 @@ extension UdacityClient{
     
     func udacityLogout(completionHandler:  @escaping(_ success: Bool, _ error: String?)->Void){
         UdacityClient.shared.taskForDeleteMethod(UdacityConstants.Session) { (json, response, error) in
-            guard let json = json as? [String: Any] else {return}
+            
+            if let errorMessage = error?.userInfo[NSLocalizedDescriptionKey] as? String{
+                completionHandler(false, errorMessage)
+            }
+            
+            //guard let json = json as? [String: Any] else {return}
             guard let response = response else {return}
+            
+            if(response.statusCode >= 200 && response.statusCode <= 299){
+                completionHandler(true, nil)
+            }else{
+                completionHandler(false, nil)
+            }
         }
     }
 }
