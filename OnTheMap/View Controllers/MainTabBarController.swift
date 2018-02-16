@@ -10,7 +10,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
 
-    static let updateMapViewControllerNotificationName =  NSNotification.Name(rawValue: "updateMapViewController")
+    static let updateMapViewControllerNotificationName = NSNotification.Name(rawValue: "updateMapViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()

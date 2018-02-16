@@ -91,10 +91,10 @@
 		38FAABCB2034B0B8007F3263 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				73F67B5A2036F32100CF3222 /* Login */,
 				73B180DB2035A85100637762 /* AddLocation */,
 				38FAABD22034E5F7007F3263 /* TableView */,
 				38FAABD72034F9E3007F3263 /* MapViewController.swift */,
-				38FAABC52034A571007F3263 /* LoginViewController.swift */,
 				38FAABCE2034BACF007F3263 /* MainTabBarController.swift */,
 			);
 			path = "View Controllers";
@@ -162,6 +162,14 @@
 				73B180E62035D7C000637762 /* UdacityConvenienceMethods.swift */,
 			);
 			path = Udacity;
+			sourceTree = "<group>";
+		};
+		73F67B5A2036F32100CF3222 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				38FAABC52034A571007F3263 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = App.OnTheMap;
@@ -401,6 +410,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = App.OnTheMap;
