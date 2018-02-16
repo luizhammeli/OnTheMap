@@ -41,7 +41,6 @@ extension UdacityClient{
                 completionHandler(false, errorMessage)
             }
             
-            //guard let json = json as? [String: Any] else {return}
             guard let response = response else {return}
             
             if(response.statusCode >= 200 && response.statusCode <= 299){
@@ -51,4 +50,14 @@ extension UdacityClient{
             }
         }
     }
+    
+    func getMapsData(){
+        
+        UdacityClient.shared.taskForGETTMethod(UdacityConstants.ParseApiGetStudentsMethod) { (json, response, error) in
+            
+            
+        }
+    }
+    
+    
 }

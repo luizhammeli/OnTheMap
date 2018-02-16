@@ -12,6 +12,31 @@ class UdacityClient: NSObject {
 
     static let shared = UdacityClient()
     
+    func taskForGETTMethod(_ method: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
+        
+        let request = NSMutableURLRequest(url: urlFromParameters([:], withPathExtension: method, host: UdacityConstants.ParseApiHost))
+        request.httpMethod = UdacityConstants.GetMethod
+        request.addValue(UdacityConstants.ParseApiID, forHTTPHeaderField: UdacityConstants.ParseIDHeaderField)
+        request.addValue(UdacityConstants.ParseAPIKey, forHTTPHeaderField: UdacityConstants.ParseAPIKeyHeaderField)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+            guard let response = response as? HTTPURLResponse else { completionHandlerForGET(nil, nil, error as NSError?); return}
+            
+            if let error = error{
+                completionHandlerForGET(nil, response, error as NSError)
+            }
+            
+            guard let data = data else {return}
+            
+            print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+            
+            //self.convertDataWithCompletionHandler(data, response, completionHandlerForConvertData: completionHandlerForGET)
+        }
+        
+        task.resume()
+        
+    }
+    
     func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
         
         let request = NSMutableURLRequest(url: urlFromParameters(parameters, withPathExtension: method))
@@ -71,11 +96,10 @@ class UdacityClient: NSObject {
         task.resume()
     }
     
-    private func urlFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
-        
+    private func urlFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil, host: String?=nil) -> URL {
         var components = URLComponents()
         components.scheme = UdacityConstants.ApiScheme
-        components.host = UdacityConstants.ApiHost
+        components.host = host == nil ? UdacityConstants.ApiHost : host
         components.path = withPathExtension ?? ""
         
         return components.url!

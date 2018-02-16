@@ -16,8 +16,17 @@ struct UdacityConstants{
     static let ContentType = "Content-Type"
     static let JsonFormat = "application/json"
     static let PostMethod = "POST"
+    static let GetMethod = "GET"
     static let DeleteMethod = "DELETE"
+    static let ParseIDHeaderField = "X-Parse-Application-Id"
+    static let ParseAPIKeyHeaderField = "X-Parse-REST-API-Key"
+    
+    static let ParseApiID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+    static let ParseAPIKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+    static let ParseApiHost = "parse.udacity.com"
+    static let ParseApiGetStudentsMethod = "/parse/classes/StudentLocation"
 }
+
 
 
 struct UdacityResponseKeysConstants{
@@ -28,5 +37,4 @@ struct UdacityResponseKeysConstants{
     static let Account = "account"
     static let Status = "status"
     static let Error = "error"
-    
 }

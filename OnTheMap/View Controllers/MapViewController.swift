@@ -22,6 +22,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         AlertController.showAlert(title: "", message: "teste", viewController: self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UdacityClient.shared.getMapsData()
+    }
+    
 //    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 //
 //    }
