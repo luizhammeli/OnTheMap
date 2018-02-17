@@ -51,11 +51,11 @@ extension UdacityClient{
         }
     }
     
-    func getMapsData(){
+    func getMapsData(completionHandler: @escaping (_ success: Bool, _ error: String?)->Void ){
         
         UdacityClient.shared.taskForGETTMethod(UdacityConstants.ParseApiGetStudentsMethod) { (json, response, error) in
             
-            
+            completionHandler(true, "")
         }
     }
     

@@ -11,6 +11,8 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UdacityClient.shared.getMapsData()
+        self.showActivityIndicator(false)
+        UdacityClient.shared.getMapsData { (success, error) in
+            DispatchQueue.main.async {
+                self.showActivityIndicator(true)
+            }
+            
+        }
+    }
+    
+    func showActivityIndicator(_ hidden: Bool){
+        visualEffectView.isHidden = hidden
+        activityIndicator.isHidden = hidden
+        hidden ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
     }
     
 //    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

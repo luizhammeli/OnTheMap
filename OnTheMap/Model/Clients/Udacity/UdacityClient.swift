@@ -30,7 +30,7 @@ class UdacityClient: NSObject {
             
             print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
             
-            //self.convertDataWithCompletionHandler(data, response, completionHandlerForConvertData: completionHandlerForGET)
+            self.convertDataWithCompletionHandler(data, response, completionHandlerForConvertData: completionHandlerForGET)
         }
         
         task.resume()
@@ -53,6 +53,8 @@ class UdacityClient: NSObject {
             }
             
             guard var data = data else {return}
+            
+            print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
             
             if(request.url?.absoluteString.contains(UdacityConstants.Session))!{
                 data = self.convertLoginData(data)

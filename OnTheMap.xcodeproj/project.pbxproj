@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38BD52B72037B181000E1D69 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BD52B62037B181000E1D69 /* User.swift */; };
+		38BD52B92037B195000E1D69 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BD52B82037B195000E1D69 /* Location.swift */; };
 		38FAABB220349917007F3263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABB120349917007F3263 /* AppDelegate.swift */; };
 		38FAABB420349917007F3263 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABB320349917007F3263 /* AddLocationViewController.swift */; };
 		38FAABB720349917007F3263 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FAABB520349917007F3263 /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38BD52B62037B181000E1D69 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		38BD52B82037B195000E1D69 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		38FAABAE20349917007F3263 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FAABB120349917007F3263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38FAABB320349917007F3263 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				73B180DF2035CF4B00637762 /* Clients */,
+				38BD52B62037B181000E1D69 /* User.swift */,
+				38BD52B82037B195000E1D69 /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,12 +252,14 @@
 			files = (
 				73B180E72035D7C000637762 /* UdacityConvenienceMethods.swift in Sources */,
 				73B180DD2035A87E00637762 /* FinishAddLocationViewController.swift in Sources */,
+				38BD52B92037B195000E1D69 /* Location.swift in Sources */,
 				38FAABCA2034AEB0007F3263 /* Extensions.swift in Sources */,
 				38FAABD62034EE3B007F3263 /* AlertController.swift in Sources */,
 				38FAABD42034E628007F3263 /* LocationTableViewCell.swift in Sources */,
 				38FAABD82034F9E3007F3263 /* MapViewController.swift in Sources */,
 				38FAABC62034A571007F3263 /* LoginViewController.swift in Sources */,
 				38FAABCF2034BACF007F3263 /* MainTabBarController.swift in Sources */,
+				38BD52B72037B181000E1D69 /* User.swift in Sources */,
 				38FAABB420349917007F3263 /* AddLocationViewController.swift in Sources */,
 				73B180E22035CF8400637762 /* UdacityClient.swift in Sources */,
 				38FAABD12034E09A007F3263 /* LocationsTableViewController.swift in Sources */,
