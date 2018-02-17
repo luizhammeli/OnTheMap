@@ -26,6 +26,10 @@ extension UdacityClient{
             
             if (response.statusCode >= 200 && response.statusCode <= 299){
                 guard let account = json[UdacityResponseKeysConstants.Account] as? [String: Any], let success = account[UdacityResponseKeysConstants.Registered] as? Bool else {return}
+                guard let session = json[UdacityResponseKeysConstants.Session] as? [String: Any] else {return}
+                
+                UdacityClient.shared.user = User(session: session, account: account)
+                
                 completionHandler(success, nil)
             }else{
                 guard let error = json[UdacityResponseKeysConstants.Error] as? String else {return}
@@ -55,9 +59,26 @@ extension UdacityClient{
         
         UdacityClient.shared.taskForGETTMethod(UdacityConstants.ParseApiGetStudentsMethod) { (json, response, error) in
             
-            completionHandler(true, "")
+            if let errorMessage = error?.userInfo[NSLocalizedDescriptionKey] as? String{
+                completionHandler(false, errorMessage)
+            }
+            
+            guard let response = response,  let json = json as? [String: Any], let results = json["results"] as? [[String: Any]] else {completionHandler(false, "Error to get data"); return}
+            
+            if(response.statusCode >= 200 && response.statusCode <= 299){
+                UdacityClient.shared.locations = self.getLocationsArray(results)                
+                completionHandler(true, nil)
+            }else{
+                completionHandler(false, nil)
+            }
         }
     }
     
-    
+    func getLocationsArray(_ locationDic: [[String: Any]])-> [Location]{
+        var locations = [Location]()
+        for location in locationDic{
+            locations.append(Location(location))
+        }
+        return locations
+    }
 }

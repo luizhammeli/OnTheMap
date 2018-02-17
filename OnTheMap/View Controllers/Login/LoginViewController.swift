@@ -30,8 +30,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func SignUp(_ sender: Any) {
-        guard let url = URL(string: Strings.UdacityRegisterURL) else {return}
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        UIApplication.shared.showUrl(stringUrl: Strings.UdacityRegisterURL)
     }
     
     func setUpSignUpButton(){

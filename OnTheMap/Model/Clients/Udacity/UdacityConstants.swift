@@ -27,14 +27,22 @@ struct UdacityConstants{
     static let ParseApiGetStudentsMethod = "/parse/classes/StudentLocation"
 }
 
-
-
 struct UdacityResponseKeysConstants{
     static let Registered = "registered"
     static let Key = "key"
     static let ID = "id"
     static let Expiration = "expiration"
     static let Account = "account"
+    static let Session = "session"
     static let Status = "status"
     static let Error = "error"
+}
+
+struct JsonObjectKeys{
+    static let FirstName: String = "firstName"
+    static let LastName: String = "lastName"
+    static let Latitude: String = "latitude"
+    static let Longitude: String = "longitude"
+    static let MediaURL: String = "mediaURL"
+    static let UniqueKey: String = "uniqueKey"
 }

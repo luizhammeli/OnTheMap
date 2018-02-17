@@ -13,6 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var annotations = [MKPointAnnotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         UdacityClient.shared.getMapsData { (success, error) in
             DispatchQueue.main.async {
                 self.showActivityIndicator(true)
+                self.getPointAnnotation()
             }
-            
         }
     }
     
@@ -41,11 +42,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         hidden ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
     }
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//
-//    }
-    
-//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//
-//    }
+    func getPointAnnotation(){
+        guard let locations = UdacityClient.shared.locations else {return}
+        
+        for location in locations{
+            let latitude = CLLocationDegrees(location.latitude)
+            let longitude = CLLocationDegrees(location.longitude)
+            
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            
+            let firstName = location.firstName
+            let lastNAme = location.lastName
+            let mediaURL = location.mediaURL
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(firstName) \(lastNAme)"
+            annotation.subtitle = mediaURL
+            
+            annotations.append(annotation)
+        }
+        
+        self.mapView.addAnnotations(annotations)
+    }
 }

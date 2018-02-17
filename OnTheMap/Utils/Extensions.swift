@@ -21,3 +21,10 @@ extension UITextField{
         self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: UIColor.gray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)])
     }
 }
+
+extension UIApplication{
+    func showUrl(stringUrl: String){
+        guard let url = URL(string: stringUrl) else {return}
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+}

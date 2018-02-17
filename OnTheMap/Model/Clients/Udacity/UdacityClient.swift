@@ -11,6 +11,8 @@ import UIKit
 class UdacityClient: NSObject {
 
     static let shared = UdacityClient()
+    var user:User?
+    var locations:[Location]?
     
     func taskForGETTMethod(_ method: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
         
@@ -28,7 +30,7 @@ class UdacityClient: NSObject {
             
             guard let data = data else {return}
             
-            print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+            //print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
             
             self.convertDataWithCompletionHandler(data, response, completionHandlerForConvertData: completionHandlerForGET)
         }
@@ -52,9 +54,7 @@ class UdacityClient: NSObject {
                 completionHandlerForPOST(nil, response, error as NSError)
             }
             
-            guard var data = data else {return}
-            
-            print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+            guard var data = data else {return}                        
             
             if(request.url?.absoluteString.contains(UdacityConstants.Session))!{
                 data = self.convertLoginData(data)
