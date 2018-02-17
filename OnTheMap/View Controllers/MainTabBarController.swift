@@ -25,6 +25,7 @@ class MainTabBarController: UITabBarController {
     @IBAction func addLocation(_ sender: Any) {
         self.performSegue(withIdentifier: Strings.goToAddLocationSegueID, sender: self)
     }
+    
     @IBAction func refreshMapViewController(_ sender: Any) {
         NotificationCenter.default.post(name: MainTabBarController.updateMapViewControllerNotificationName, object: nil)
     }
