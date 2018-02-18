@@ -315,7 +315,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="finishButton" destination="qoi-UN-B3n" id="VkO-V3-BxZ"/>
-                        <outlet property="mapView" destination="RoU-ON-ac2" id="vWI-ie-0Me"/>
+                        <outlet property="mapView" destination="RoU-ON-ac2" id="sc1-i6-73K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m13-hZ-3Lk" userLabel="First Responder" sceneMemberID="firstResponder"/>

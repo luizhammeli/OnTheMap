@@ -31,6 +31,7 @@ class MainTabBarController: UITabBarController {
             AlertController.showAlert(title: "", message: message, viewController: self, handler: goToUpdateLocation)
             return
         }
+        self.performSegue(withIdentifier: Strings.goToAddLocationSegueID, sender: self)
     }
     
     @IBAction func refreshMapViewController(_ sender: Any) {

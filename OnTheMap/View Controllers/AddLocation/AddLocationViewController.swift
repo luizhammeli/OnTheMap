@@ -35,7 +35,7 @@ class AddLocationViewController: UIViewController {
         guard let location = locationTextField.text, let url = urlTextField.text else {return}
         
         if(!location.isEmpty && !url.isEmpty){
-            self.performSegue(withIdentifier: Strings.FinishAddLocation, sender: self)
+            self.performSegue(withIdentifier: Strings.FinishAddLocation, sender: (location, url))
         }else{
             AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: Strings.LocationNotFoundMessage, viewController: self)
         }
@@ -60,5 +60,15 @@ class AddLocationViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier ==  Strings.FinishAddLocation){
+            let finishAddLocationViewController = segue.destination as! FinishAddLocationViewController
+            guard let sender = sender as? (String, String) else {return}
+            finishAddLocationViewController.mediaUrl = sender.1
+            finishAddLocationViewController.stringLocation = sender.0
+            //finishAddLocationViewController.stringLocation = sender.1
+        }
     }
 }
