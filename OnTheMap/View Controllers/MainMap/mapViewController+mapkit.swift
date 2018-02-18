@@ -39,4 +39,25 @@ extension MapViewController{
         }
     }
     
+    func getPointAnnotation(){
+        for location in UdacityClient.shared.locations{
+            let latitude = CLLocationDegrees(location.latitude)
+            let longitude = CLLocationDegrees(location.longitude)
+            
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            
+            let firstName = location.firstName
+            let lastNAme = location.lastName
+            let mediaURL = location.mediaURL
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(firstName) \(lastNAme)"
+            annotation.subtitle = mediaURL
+            
+            annotations.append(annotation)
+        }
+        
+        self.mapView.addAnnotations(annotations)
+    }
 }

@@ -12,6 +12,8 @@ class MainTabBarController: UITabBarController {
 
     static let updateMapViewControllerNotificationName = NSNotification.Name(rawValue: "updateMapViewController")
     
+    var selectedLocation: Location?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,7 +25,12 @@ class MainTabBarController: UITabBarController {
     }
     
     @IBAction func addLocation(_ sender: Any) {
-        self.performSegue(withIdentifier: Strings.goToAddLocationSegueID, sender: self)
+        if (checkUserAddedLocation()){
+            guard let location = self.selectedLocation else {return}
+            let message = Strings.locationUpdateMessage.replacingOccurrences(of: "{user}", with: "\"\(location.firstName) \(location.lastName)\"")
+            AlertController.showAlert(title: "", message: message, viewController: self, handler: goToUpdateLocation)
+            return
+        }
     }
     
     @IBAction func refreshMapViewController(_ sender: Any) {
@@ -39,5 +46,30 @@ class MainTabBarController: UITabBarController {
                 AlertController.showAlert(title: "", message: error, viewController: self)
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == Strings.goToAddLocationSegueID){
+            if let _ = selectedLocation{
+                let _ = segue.destination as! AddLocationViewController
+                print("update")
+            }
+        }
+    }
+    
+    private func checkUserAddedLocation()->Bool{
+        selectedLocation = nil
+        
+        for location in UdacityClient.shared.locations{
+            if(UdacityClient.shared.user?.id == location.uniqueKey){
+                self.selectedLocation = location
+                return true
+            }
+        }
+        return false
+    }
+    
+    func goToUpdateLocation(alert: UIAlertAction){
+        self.performSegue(withIdentifier: Strings.goToAddLocationSegueID, sender: self)
     }
 }

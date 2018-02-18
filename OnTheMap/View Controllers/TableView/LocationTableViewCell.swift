@@ -10,7 +10,14 @@ import UIKit
 
 class LocationTableViewCell: UITableViewCell {
     
+    var location:Location?{
+        didSet{
+            guard let location = location else {return}
+            nameLabel.text = "\(location.firstName) \(location.lastName)"
+            urlLabel.text = location.mediaURL
+        }
+    }
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var urlLabel: UILabel!
-
 }

@@ -27,4 +27,12 @@ struct Strings{
     
     //Cell ID
     static let LocationsTableViewControllerCellID = "cellID"
+    
+    //Alert Button
+    
+    static let Dismiss = "Dismiss"
+    static let Overwrite = "Overwrite"
+    static let Cancel = "Cancel"
+    
+    static let locationUpdateMessage = "User {user} Has Alredy Posted a Student Location. Would You Like To Overwrite Their Location?"
 }

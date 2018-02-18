@@ -25,6 +25,7 @@ class FinishAddLocationViewController: UIViewController {
     
     @IBAction func finishAddLocation(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
+        NotificationCenter.default.post(name: MainTabBarController.updateMapViewControllerNotificationName, object: nil)
     }
     
     @IBAction func goToAddLocationViewController(){

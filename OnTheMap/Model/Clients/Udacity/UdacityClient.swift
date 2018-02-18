@@ -12,7 +12,7 @@ class UdacityClient: NSObject {
 
     static let shared = UdacityClient()
     var user:User?
-    var locations:[Location]?
+    var locations = [Location]()
     
     func taskForGETTMethod(_ method: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
         
