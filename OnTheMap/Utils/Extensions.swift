@@ -28,3 +28,12 @@ extension UIApplication{
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
+
+extension URL{
+    static func isValid(_ stringURL: String) -> Bool {
+        let regEx = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
+        let urlPredicate = NSPredicate(format:"SELF MATCHES %@", regEx)
+        let result = urlPredicate.evaluate(with: stringURL)
+        return result
+    }
+}

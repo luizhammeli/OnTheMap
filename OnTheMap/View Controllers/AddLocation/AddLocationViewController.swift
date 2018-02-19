@@ -35,7 +35,7 @@ class AddLocationViewController: UIViewController {
         guard let location = locationTextField.text, let url = urlTextField.text else {return}
         
         if(!location.isEmpty && !url.isEmpty){
-            if isValidUrl(url){
+            if URL.isValid(url){
                 self.performSegue(withIdentifier: Strings.FinishAddLocation, sender: (location, url))
             }else{
                 AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: Strings.InvalidURLMessage, viewController: self)
@@ -73,12 +73,5 @@ class AddLocationViewController: UIViewController {
             finishAddLocationViewController.mediaUrl = sender.1
             finishAddLocationViewController.stringLocation = sender.0
         }
-    }
-    
-    func isValidUrl(_ stringURL: String) -> Bool {
-        let regEx = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
-        let urlPredicate = NSPredicate(format:"SELF MATCHES %@", regEx)
-        let result = urlPredicate.evaluate(with: stringURL)
-        return result
     }
 }
