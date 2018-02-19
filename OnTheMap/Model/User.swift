@@ -12,6 +12,7 @@ struct User{
     
     let id: String
     let sessionID: String
+    var name: String = ""
     
     init(session: [String: Any], account: [String: Any]) {
         id = account["key"] as? String ?? ""

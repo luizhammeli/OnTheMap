@@ -18,9 +18,7 @@ struct Location{
     
     init(_ dic: [String: Any]){
         firstName = dic[JsonObjectKeys.FirstName] as? String ?? ""
-        print(firstName)
         lastName = dic[JsonObjectKeys.LastName] as? String ?? ""
-        print(lastName)
         latitude = dic[JsonObjectKeys.Latitude] as? Double ?? 0.0
         longitude = dic[JsonObjectKeys.Longitude] as? Double ?? 0.0
         mediaURL = dic[JsonObjectKeys.MediaURL] as? String ?? ""

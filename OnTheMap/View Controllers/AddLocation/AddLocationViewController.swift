@@ -35,10 +35,14 @@ class AddLocationViewController: UIViewController {
         guard let location = locationTextField.text, let url = urlTextField.text else {return}
         
         if(!location.isEmpty && !url.isEmpty){
-            self.performSegue(withIdentifier: Strings.FinishAddLocation, sender: (location, url))
-        }else{
-            AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: Strings.LocationNotFoundMessage, viewController: self)
+            if isValidUrl(url){
+                self.performSegue(withIdentifier: Strings.FinishAddLocation, sender: (location, url))
+            }else{
+                AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: Strings.InvalidURLMessage, viewController: self)
+            }
+            return
         }
+        AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: Strings.LocationNotFoundMessage, viewController: self)
     }
     
     func addNotification(){
@@ -68,7 +72,13 @@ class AddLocationViewController: UIViewController {
             guard let sender = sender as? (String, String) else {return}
             finishAddLocationViewController.mediaUrl = sender.1
             finishAddLocationViewController.stringLocation = sender.0
-            //finishAddLocationViewController.stringLocation = sender.1
         }
+    }
+    
+    func isValidUrl(_ stringURL: String) -> Bool {
+        let regEx = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
+        let urlPredicate = NSPredicate(format:"SELF MATCHES %@", regEx)
+        let result = urlPredicate.evaluate(with: stringURL)
+        return result
     }
 }

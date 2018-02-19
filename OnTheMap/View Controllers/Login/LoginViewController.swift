@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         guard let email = emailTextField.text, let password = passwordTextField.text else {return}
         if(!email.isEmpty && !password.isEmpty){
             hideActivityIndicator(false)
-            UdacityClient.shared.udacityDefaultLogin(email, password, completionHandler: finishLogin)
+            UdacityClient.shared.udacityDefaultLogin(email, password, completionHandler: getUserData)
         }else{
             AlertController.showAlert(title: "", message: Strings.EmptyEmailOrPasswordMessage, viewController: self)
         }
@@ -58,6 +58,17 @@ class LoginViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func getUserData(success: Bool, error: String?){
+        if(success){
+            UdacityClient.shared.getUserData(completionHandler: finishLogin)
+        }else{
+            DispatchQueue.main.async {
+                self.hideActivityIndicator(true)
+                AlertController.showAlert(title: "", message: error, viewController: self)
+            }            
+        }
     }
     
     func finishLogin(success: Bool, error: String?){

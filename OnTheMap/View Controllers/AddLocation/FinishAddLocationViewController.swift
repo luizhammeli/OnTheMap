@@ -46,8 +46,24 @@ class FinishAddLocationViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func finishAddLocation(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
-        NotificationCenter.default.post(name: MainTabBarController.updateMapViewControllerNotificationName, object: nil)
+        guard let user = UdacityClient.shared.user else {return}
+        let location = Location([JsonObjectKeys.FirstName: user.name, JsonObjectKeys.LastName: "", JsonObjectKeys.Latitude: self.mapView.annotations[0].coordinate.latitude, JsonObjectKeys.Longitude: self.mapView.annotations[0].coordinate.longitude, JsonObjectKeys.MediaURL: mediaUrl, JsonObjectKeys.UniqueKey: user.id])
+        
+        UdacityClient.shared.postLocationData(location, mapString: stringLocation) { (success, error) in
+            if(success){
+                self.goToRootViewController()
+                return
+            }
+        }
+        
+
+    }
+    
+    func goToRootViewController(){
+        DispatchQueue.main.async {
+            self.navigationController?.popToRootViewController(animated: true)
+            NotificationCenter.default.post(name: MainTabBarController.updateMapViewControllerNotificationName, object: nil)
+        }
     }
     
     @IBAction func goToAddLocationViewController(){
@@ -68,7 +84,6 @@ class FinishAddLocationViewController: UIViewController, MKMapViewDelegate {
         else {
             pinView!.annotation = annotation
         }
-        
         return pinView
     }
     

@@ -12,6 +12,7 @@ struct UdacityConstants{
     static let ApiScheme = "https"
     static let ApiHost = "www.udacity.com"
     static let Session = "/api/session"
+    static let GetUserData = "/api/users/"
     static let Accept = "Accept"
     static let ContentType = "Content-Type"
     static let JsonFormat = "application/json"

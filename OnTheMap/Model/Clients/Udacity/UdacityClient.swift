@@ -14,9 +14,11 @@ class UdacityClient: NSObject {
     var user:User?
     var locations = [Location]()
     
-    func taskForGETTMethod(_ method: String, completionHandlerForGET: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
+    func taskForGETTMethod(_ method: String, stringHost: String?=nil,completionHandlerForGET: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
         
-        let request = NSMutableURLRequest(url: urlFromParameters([:], withPathExtension: method, host: UdacityConstants.ParseApiHost))
+        let host = stringHost == nil ?  UdacityConstants.ParseApiHost : stringHost
+        
+        let request = NSMutableURLRequest(url: urlFromParameters(withPathExtension: method, host: host))
         request.httpMethod = UdacityConstants.GetMethod
         request.addValue(UdacityConstants.ParseApiID, forHTTPHeaderField: UdacityConstants.ParseIDHeaderField)
         request.addValue(UdacityConstants.ParseAPIKey, forHTTPHeaderField: UdacityConstants.ParseAPIKeyHeaderField)
@@ -28,23 +30,21 @@ class UdacityClient: NSObject {
                 completionHandlerForGET(nil, response, error as NSError)
             }
             
-            guard let data = data else {return}
+            guard var data = data else {return}
             
-            //print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+            if(request.url?.absoluteString.contains(UdacityConstants.GetUserData))!{
+                data = self.convertLoginData(data)
+            }
             
             self.convertDataWithCompletionHandler(data, response, completionHandlerForConvertData: completionHandlerForGET)
         }
         
         task.resume()
-        
     }
     
-    func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
+    func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject], jsonBody: String, host: String?=nil, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
         
-        let request = NSMutableURLRequest(url: urlFromParameters(parameters, withPathExtension: method))
-        request.httpMethod = UdacityConstants.PostMethod
-        request.addValue(UdacityConstants.JsonFormat, forHTTPHeaderField: UdacityConstants.Accept)
-        request.addValue(UdacityConstants.JsonFormat, forHTTPHeaderField: UdacityConstants.ContentType)
+        let request = buildRequest(parameters: parameters, httpMethod: UdacityConstants.PostMethod, url: urlFromParameters(withPathExtension: method, host: host))
         request.httpBody = jsonBody.data(using: String.Encoding.utf8)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -68,7 +68,7 @@ class UdacityClient: NSObject {
     
     func taskForDeleteMethod(_ method: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
         
-        let request = NSMutableURLRequest(url: urlFromParameters([:], withPathExtension: method))
+        let request = NSMutableURLRequest(url: urlFromParameters(withPathExtension: method))
         request.httpMethod = UdacityConstants.DeleteMethod
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookieStorage = HTTPCookieStorage.shared
@@ -98,7 +98,7 @@ class UdacityClient: NSObject {
         task.resume()
     }
     
-    private func urlFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil, host: String?=nil) -> URL {
+    private func urlFromParameters(withPathExtension: String? = nil, host: String?=nil) -> URL {
         var components = URLComponents()
         components.scheme = UdacityConstants.ApiScheme
         components.host = host == nil ? UdacityConstants.ApiHost : host
@@ -124,5 +124,18 @@ class UdacityClient: NSObject {
         let range = Range(5..<data.count)
         let newData = data.subdata(in: range)
         return newData
+    }
+    
+    func buildRequest(parameters: [String:AnyObject], httpMethod: String, url: URL)->NSMutableURLRequest{
+        let request = NSMutableURLRequest(url: url)
+        request.httpMethod = httpMethod
+        request.addValue(UdacityConstants.JsonFormat, forHTTPHeaderField: UdacityConstants.Accept)
+        request.addValue(UdacityConstants.JsonFormat, forHTTPHeaderField: UdacityConstants.ContentType)
+        
+        for (key, value) in parameters{
+            request.addValue(value as! String, forHTTPHeaderField: key)
+        }
+        
+        return request
     }
 }

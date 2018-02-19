@@ -74,6 +74,47 @@ extension UdacityClient{
         }
     }
     
+    func getUserData(completionHandler: @escaping (_ success: Bool, _ error: String?)->Void){
+        guard let userID = UdacityClient.shared.user?.id else {return}
+        UdacityClient.shared.taskForGETTMethod("\(UdacityConstants.GetUserData)\(userID)", stringHost: UdacityConstants.ApiHost) { (json, response, error) in
+            
+            if let errorMessage = error?.userInfo[NSLocalizedDescriptionKey] as? String{
+                completionHandler(false, errorMessage)
+            }
+            
+            guard let response = response,  let json = json as? [String: Any], let user = json["user"] as? [String: Any] else {completionHandler(false, "Error to get user data"); return}
+            
+            if(response.statusCode >= 200 && response.statusCode <= 299){
+                UdacityClient.shared.user?.name = user["nickname"] as! String
+                completionHandler(true, nil)
+            }else{
+                completionHandler(false, nil)
+            }
+        }
+    }
+    
+    func postLocationData(_ locationData: Location, mapString:String, completionHandler:  @escaping(_ success: Bool, _ error: String?)->Void){
+        
+        let jsonBody = "{\"uniqueKey\": \"\(locationData.uniqueKey)\", \"firstName\": \"\(locationData.firstName)\", \"lastName\": \"\(locationData.lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(locationData.mediaURL)\",\"latitude\": \(locationData.latitude), \"longitude\": \(locationData.longitude)}"
+        
+        let parameters = [UdacityConstants.ParseIDHeaderField: UdacityConstants.ParseApiID, UdacityConstants.ParseAPIKeyHeaderField: UdacityConstants.ParseAPIKey] as [String : AnyObject]
+        
+        UdacityClient.shared.taskForPOSTMethod(UdacityConstants.ParseApiGetStudentsMethod, parameters: parameters, jsonBody: jsonBody, host: UdacityConstants.ParseApiHost) { (json, response, error) in
+            
+            if let errorMessage = error?.userInfo[NSLocalizedDescriptionKey] as? String{
+                completionHandler(false, errorMessage)
+            }
+            
+            guard let response = response,  let json = json as? [String: Any], let _ = json["objectId"] as? String else {completionHandler(false, "Error to post user data"); return}
+            
+            if(response.statusCode >= 200 && response.statusCode <= 299){
+                completionHandler(true, nil)
+            }else{
+                completionHandler(false, nil)
+            }
+        }
+    }
+    
     func getLocationsArray(_ locationDic: [[String: Any]])-> [Location]{
         var locations = [Location]()
         for location in locationDic{
