@@ -27,6 +27,11 @@ class FinishAddLocationViewController: UIViewController, MKMapViewDelegate {
         super.viewWillAppear(true)
         let geoCoder = CLGeocoder()        
         geoCoder.geocodeAddressString(stringLocation) { (placemarks, error) in
+            
+            if let error = error{
+                AlertController.showAlert(title: "", message: "Invalid Location", viewController: self)
+                self.navigationController?.popViewController(animated: true)
+            }
             guard let placemarks = placemarks, let location = placemarks.first?.location else {return}
             self.setAnnotation(location)
         }   

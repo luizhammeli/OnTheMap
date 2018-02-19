@@ -14,11 +14,11 @@ class UdacityClient: NSObject {
     var user:User?
     var locations = [Location]()
     
-    func taskForGETTMethod(_ method: String, stringHost: String?=nil,completionHandlerForGET: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
+    func taskForGETTMethod(_ method: String, stringHost: String?=nil, queryParameters: [String:String]?=nil,completionHandlerForGET: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
         
         let host = stringHost == nil ?  UdacityConstants.ParseApiHost : stringHost
+        let request = NSMutableURLRequest(url: urlFromParameters(withPathExtension: method, host: host, queryParameters: queryParameters))
         
-        let request = NSMutableURLRequest(url: urlFromParameters(withPathExtension: method, host: host))
         request.httpMethod = UdacityConstants.GetMethod
         request.addValue(UdacityConstants.ParseApiID, forHTTPHeaderField: UdacityConstants.ParseIDHeaderField)
         request.addValue(UdacityConstants.ParseAPIKey, forHTTPHeaderField: UdacityConstants.ParseAPIKeyHeaderField)
@@ -98,11 +98,21 @@ class UdacityClient: NSObject {
         task.resume()
     }
     
-    private func urlFromParameters(withPathExtension: String? = nil, host: String?=nil) -> URL {
+    private func urlFromParameters(withPathExtension: String? = nil, host: String?=nil, queryParameters: [String: String]? = nil) -> URL {
         var components = URLComponents()
         components.scheme = UdacityConstants.ApiScheme
         components.host = host == nil ? UdacityConstants.ApiHost : host
         components.path = withPathExtension ?? ""
+        
+        if let parameters = queryParameters{
+            var queryItems = [URLQueryItem]()
+            for (key, value) in parameters{
+                let queryItem = URLQueryItem(name: key, value: value)
+                queryItems.append(queryItem)
+            }
+            
+            components.queryItems = queryItems
+        }
         
         return components.url!
     }

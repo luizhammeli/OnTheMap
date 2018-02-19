@@ -46,4 +46,5 @@ struct JsonObjectKeys{
     static let Longitude: String = "longitude"
     static let MediaURL: String = "mediaURL"
     static let UniqueKey: String = "uniqueKey"
+    static let ObjectID: String = "objectId"
 }

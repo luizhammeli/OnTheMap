@@ -123,7 +123,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZYU-w4-au4">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                             </mapView>
-                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="seW-Sc-dP5">
+                            <visualEffectView opaque="NO" alpha="0.90000000000000002" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="seW-Sc-dP5">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J8L-d3-8Yl">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
