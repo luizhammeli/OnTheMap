@@ -23,6 +23,7 @@
 		38FAABD42034E628007F3263 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD32034E628007F3263 /* LocationTableViewCell.swift */; };
 		38FAABD62034EE3B007F3263 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD52034EE3B007F3263 /* AlertController.swift */; };
 		38FAABD82034F9E3007F3263 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FAABD72034F9E3007F3263 /* MapViewController.swift */; };
+		737235B0203B62640007C084 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737235AF203B62640007C084 /* ActivityIndicator.swift */; };
 		73B180DD2035A87E00637762 /* FinishAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B180DC2035A87E00637762 /* FinishAddLocationViewController.swift */; };
 		73B180E22035CF8400637762 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B180E12035CF8400637762 /* UdacityClient.swift */; };
 		73B180E52035D1D500637762 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B180E42035D1D500637762 /* UdacityConstants.swift */; };
@@ -48,6 +49,7 @@
 		38FAABD32034E628007F3263 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		38FAABD52034EE3B007F3263 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		38FAABD72034F9E3007F3263 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		737235AF203B62640007C084 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		73B180DC2035A87E00637762 /* FinishAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishAddLocationViewController.swift; sourceTree = "<group>"; };
 		73B180E12035CF8400637762 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		73B180E42035D1D500637762 /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				38FAABC72034ACC7007F3263 /* Constants.swift */,
 				38FAABC92034AEB0007F3263 /* Extensions.swift */,
 				38FAABD52034EE3B007F3263 /* AlertController.swift */,
+				737235AF203B62640007C084 /* ActivityIndicator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				38FAABD12034E09A007F3263 /* LocationsTableViewController.swift in Sources */,
 				73B180E52035D1D500637762 /* UdacityConstants.swift in Sources */,
 				38FAABB220349917007F3263 /* AppDelegate.swift in Sources */,
+				737235B0203B62640007C084 /* ActivityIndicator.swift in Sources */,
 				38FAABC82034ACC7007F3263 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
