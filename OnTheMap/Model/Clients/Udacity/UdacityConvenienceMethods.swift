@@ -62,12 +62,13 @@ extension UdacityClient{
             
             if let errorMessage = error?.userInfo[NSLocalizedDescriptionKey] as? String{
                 completionHandler(false, errorMessage)
+                return
             }
             
             guard let response = response,  let json = json as? [String: Any], let results = json["results"] as? [[String: Any]] else {completionHandler(false, "Error to get data"); return}
             
             if(response.statusCode >= 200 && response.statusCode <= 299){
-                UdacityClient.shared.locations = self.getLocationsArray(results)                
+                UdacityClient.shared.studentInformations = self.getLocationsArray(results)                
                 completionHandler(true, nil)
             }else{
                 completionHandler(false, nil)
@@ -83,7 +84,7 @@ extension UdacityClient{
                 completionHandler(false, errorMessage)
             }
             
-            guard let response = response,  let json = json as? [String: Any], let user = json["user"] as? [String: Any] else {completionHandler(false, "Error to get user data"); return}
+            guard let response = response,  let json = json as? [String: Any], let user = json["user"] as? [String: Any] else {completionHandler(false, Strings.ErrorGetUserData); return}
             
             if(response.statusCode >= 200 && response.statusCode <= 299){
                 UdacityClient.shared.user?.name = user["nickname"] as! String
@@ -94,7 +95,7 @@ extension UdacityClient{
         }
     }
     
-    func postLocationData(_ locationData: Location, mapString:String, completionHandler:  @escaping(_ success: Bool, _ error: String?)->Void){
+    func postLocationData(_ locationData: StudentInformation, mapString:String, completionHandler:  @escaping(_ success: Bool, _ error: String?)->Void){
         
         let jsonBody = "{\"uniqueKey\": \"\(locationData.uniqueKey)\", \"firstName\": \"\(locationData.firstName)\", \"lastName\": \"\(locationData.lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(locationData.mediaURL)\",\"latitude\": \(locationData.latitude), \"longitude\": \(locationData.longitude)}"
         
@@ -116,10 +117,10 @@ extension UdacityClient{
         }
     }
     
-    func getLocationsArray(_ locationDic: [[String: Any]])-> [Location]{
-        var locations = [Location]()
+    func getLocationsArray(_ locationDic: [[String: Any]])-> [StudentInformation]{
+        var locations = [StudentInformation]()
         for location in locationDic{
-            locations.append(Location(location))
+            locations.append(StudentInformation(location))
         }
         return locations
     }

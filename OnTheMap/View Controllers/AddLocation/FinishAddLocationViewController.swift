@@ -25,12 +25,12 @@ class FinishAddLocationViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        let geoCoder = CLGeocoder()        
+        let geoCoder = CLGeocoder()
+        ActivityIndicator.showActivityIndicator(viewController: self)
         geoCoder.geocodeAddressString(stringLocation) { (placemarks, error) in
-            
+            ActivityIndicator.removeActivityIndicator()
             if let error = error{
-                AlertController.showAlert(title: "", message: "Invalid Location", viewController: self)
-                self.navigationController?.popViewController(animated: true)
+                AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: error.localizedDescription, viewController: self, handler: { alert in self.navigationController?.popViewController(animated: true)})
             }
             guard let placemarks = placemarks, let location = placemarks.first?.location else {return}
             self.setAnnotation(location)
@@ -52,23 +52,31 @@ class FinishAddLocationViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func finishAddLocation(_ sender: Any) {
         guard let user = UdacityClient.shared.user else {return}
-        let location = Location([JsonObjectKeys.FirstName: user.name, JsonObjectKeys.LastName: "", JsonObjectKeys.Latitude: self.mapView.annotations[0].coordinate.latitude, JsonObjectKeys.Longitude: self.mapView.annotations[0].coordinate.longitude, JsonObjectKeys.MediaURL: mediaUrl, JsonObjectKeys.UniqueKey: user.id])
+        let location = StudentInformation([JsonObjectKeys.FirstName: user.name, JsonObjectKeys.LastName: "", JsonObjectKeys.Latitude: self.mapView.annotations[0].coordinate.latitude, JsonObjectKeys.Longitude: self.mapView.annotations[0].coordinate.longitude, JsonObjectKeys.MediaURL: mediaUrl, JsonObjectKeys.UniqueKey: user.id])
+        
+        ActivityIndicator.showActivityIndicator(viewController: self)
         
         UdacityClient.shared.postLocationData(location, mapString: stringLocation) { (success, error) in
+            self.postLocationCompletionHandler(success, error)
+        }
+    }
+    
+    func postLocationCompletionHandler(_ success: Bool, _ error: String?){
+        DispatchQueue.main.async {
+            ActivityIndicator.removeActivityIndicator()
             if(success){
                 self.goToRootViewController()
                 return
+            }else{
+                guard let error = error else {return}
+                AlertController.showAlert(title: "", message: error, viewController: self)
             }
         }
-        
-
     }
     
     func goToRootViewController(){
-        DispatchQueue.main.async {
-            self.navigationController?.popToRootViewController(animated: true)
-            NotificationCenter.default.post(name: MainTabBarController.updateMapViewControllerNotificationName, object: nil)
-        }
+        self.navigationController?.popToRootViewController(animated: true)
+        NotificationCenter.default.post(name: MainTabBarController.updateMapViewControllerNotificationName, object: nil)
     }
     
     @IBAction func goToAddLocationViewController(){
@@ -92,8 +100,7 @@ class FinishAddLocationViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {        
         if control == view.rightCalloutAccessoryView {
             guard let subtitle = view.annotation?.subtitle else {return}
             if let stringUrl = subtitle{

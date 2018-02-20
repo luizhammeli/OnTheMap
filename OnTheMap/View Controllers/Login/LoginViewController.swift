@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
         emailTextField.setUpTextFieldPlaceHolder()
         passwordTextField.setUpTextFieldPlaceHolder()
         setUpSignUpButton()
+        addNotifications()
     }
     
     @IBAction func SignUp(_ sender: Any) {
@@ -35,13 +36,13 @@ class LoginViewController: UIViewController {
     
     func setUpSignUpButton(){
         let atributtedString = NSMutableAttributedString(string: Strings.SignUpButtonBlackText, attributes: [NSAttributedStringKey.foregroundColor: UIColor.black])
-        
         atributtedString.append(NSMutableAttributedString(string: Strings.SignUpButtonBlueText, attributes: [NSAttributedStringKey.foregroundColor: UIColor.udacityBlue]))
         
         signUpButton.setAttributedTitle(atributtedString, for: .normal)
     }
     
-    @IBAction func logIn(){        
+    @IBAction func logIn(){
+        self.view.endEditing(true)
         guard let email = emailTextField.text, let password = passwordTextField.text else {return}
         if(!email.isEmpty && !password.isEmpty){
             hideActivityIndicator(false)
@@ -52,8 +53,7 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        emailTextField.text?.removeAll()
-        passwordTextField.text?.removeAll()
+        removeNotification()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -85,5 +85,6 @@ class LoginViewController: UIViewController {
     func hideActivityIndicator(_ hide: Bool){
         hide ? activityIndicator.stopAnimating() : activityIndicator.startAnimating()
         self.activityIndicator.isHidden = hide
+        loginButton.isEnabled = hide
     }
 }

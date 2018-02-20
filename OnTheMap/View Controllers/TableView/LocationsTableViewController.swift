@@ -17,7 +17,7 @@ class LocationsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UdacityClient.shared.locations.count
+        return UdacityClient.shared.studentInformations.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -27,7 +27,7 @@ class LocationsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: Strings.LocationsTableViewControllerCellID, for: indexPath) as! LocationTableViewCell
-        cell.location = UdacityClient.shared.locations[indexPath.item]
+        cell.location = UdacityClient.shared.studentInformations[indexPath.item]
         return cell
     }
     
@@ -37,7 +37,7 @@ class LocationsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        guard let url = URL(string:  UdacityClient.shared.locations[indexPath.item].mediaURL) else {
+        guard let url = URL(string:  UdacityClient.shared.studentInformations[indexPath.item].mediaURL) else {
             AlertController.showAlert(title: "", message: Strings.invalidLink, viewController: self)
             self.tableView.deselectRow(at: indexPath, animated: true)
             return

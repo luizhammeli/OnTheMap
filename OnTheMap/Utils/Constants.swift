@@ -20,6 +20,7 @@ struct Strings{
     static let LocationNotFoundTitleMessage = "Location Not Found"
     static let LoginErrorDefaultMessage = "Login Error"
     static let InvalidURLMessage = "Invalid URL"
+    static let ErrorGetUserData = "Error to get user data"
     
     //Segue ID
     static let goToMainNavigationControllerSegueID = "goToMainNavigationController"

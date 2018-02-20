@@ -12,34 +12,37 @@ class MainTabBarController: UITabBarController {
 
     static let updateMapViewControllerNotificationName = NSNotification.Name(rawValue: "updateMapViewController")
     
-    var selectedLocation: Location?
+    var selectedLocation: StudentInformation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func logout(){
+        ActivityIndicator.showActivityIndicator(viewController: self)
         UdacityClient.shared.udacityLogout { (success, error) in
             self.finishLogoutHandler(success, error)
         }
     }
     
     @IBAction func addLocation(_ sender: Any) {
-        if (checkUserAddedLocation()){
-            guard let location = self.selectedLocation else {return}
-            let message = Strings.locationUpdateMessage.replacingOccurrences(of: "{user}", with: "\"\(location.firstName) \(location.lastName)\"")
-            AlertController.showAlert(title: "", message: message, viewController: self, handler: goToUpdateLocation)
-            return
-        }
+//        if (checkUserAddedLocation()){
+//            guard let location = self.selectedLocation else {return}
+//            let message = Strings.locationUpdateMessage.replacingOccurrences(of: "{user}", with: "\"\(location.firstName) \(location.lastName)\"")
+//            AlertController.showAlert(title: "", message: message, viewController: self, cancelAction: true, handler: goToUpdateLocation)
+//            return
+//        }
         self.performSegue(withIdentifier: Strings.goToAddLocationSegueID, sender: self)
     }
     
     @IBAction func refreshMapViewController(_ sender: Any) {
+        ActivityIndicator.showActivityIndicator(viewController: self)
         NotificationCenter.default.post(name: MainTabBarController.updateMapViewControllerNotificationName, object: nil)
     }
     
     func finishLogoutHandler(_ success: Bool, _ error: String?){
         DispatchQueue.main.async {
+            ActivityIndicator.removeActivityIndicator()
             if(success){
                 self.dismiss(animated: true, completion: nil)
             }else{
@@ -58,17 +61,17 @@ class MainTabBarController: UITabBarController {
         }
     }
     
-    private func checkUserAddedLocation()->Bool{
-        selectedLocation = nil
-        
-        for location in UdacityClient.shared.locations{
-            if(UdacityClient.shared.user?.id == location.uniqueKey){
-                self.selectedLocation = location
-                return true
-            }
-        }
-        return false
-    }
+//    private func checkUserAddedLocation()->Bool{
+//        selectedLocation = nil
+//        
+//        for location in UdacityClient.shared.studentInformations{
+//            if(UdacityClient.shared.user?.id == location.uniqueKey){
+//                self.selectedLocation = location
+//                return true
+//            }
+//        }
+//        return false
+//    }
     
     func goToUpdateLocation(alert: UIAlertAction){
         self.performSegue(withIdentifier: Strings.goToAddLocationSegueID, sender: self)

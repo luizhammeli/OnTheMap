@@ -25,12 +25,16 @@ class ActivityIndicator {
     static func showActivityIndicator(viewController: UIViewController){
         viewController.view.addSubview(loader)
         loader.contentView.addSubview(activityIndicator)
+        var tabBarHeight:CGFloat = 0.0
         
-        loader.topAnchor.constraint(equalTo: viewController.view.topAnchor).isActive = true
-        loader.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor).isActive = true
+        guard let navBarHeight = viewController.navigationController?.navigationBar.layer.frame.height else {return}
+        tabBarHeight = viewController.getTabBarHeigh()
+        
+        loader.topAnchor.constraint(equalTo: viewController.view.topAnchor, constant: navBarHeight).isActive = true
+        loader.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor, constant: -tabBarHeight).isActive = true
         loader.leftAnchor.constraint(equalTo: viewController.view.leftAnchor).isActive = true
         loader.rightAnchor.constraint(equalTo: viewController.view.rightAnchor).isActive = true
-        
+
         activityIndicator.centerXAnchor.constraint(equalTo: loader.contentView.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: loader.contentView.centerYAnchor).isActive = true
         activityIndicator.heightAnchor.constraint(equalToConstant: 60).isActive = true

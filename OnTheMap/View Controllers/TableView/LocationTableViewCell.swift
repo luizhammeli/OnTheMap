@@ -10,7 +10,7 @@ import UIKit
 
 class LocationTableViewCell: UITableViewCell {
     
-    var location:Location?{
+    var location:StudentInformation?{
         didSet{
             guard let location = location else {return}
             nameLabel.text = "\(location.firstName) \(location.lastName)"

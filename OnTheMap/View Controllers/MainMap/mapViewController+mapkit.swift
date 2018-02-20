@@ -40,7 +40,7 @@ extension MapViewController{
     }
     
     func getPointAnnotation(){
-        for location in UdacityClient.shared.locations{
+        for location in UdacityClient.shared.studentInformations{
             let latitude = CLLocationDegrees(location.latitude)
             let longitude = CLLocationDegrees(location.longitude)
             

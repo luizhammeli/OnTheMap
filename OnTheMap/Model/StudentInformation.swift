@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Location{
+struct StudentInformation{
     let firstName: String
     let lastName: String
     let latitude: Double
@@ -18,11 +18,11 @@ struct Location{
     let objectID: String
     
     init(_ dic: [String: Any]){
-        firstName = dic[JsonObjectKeys.FirstName] as? String ?? ""
+        firstName = dic[JsonObjectKeys.FirstName] as? String ?? "[No First Name]"
         lastName = dic[JsonObjectKeys.LastName] as? String ?? ""
         latitude = dic[JsonObjectKeys.Latitude] as? Double ?? 0.0
         longitude = dic[JsonObjectKeys.Longitude] as? Double ?? 0.0
-        mediaURL = dic[JsonObjectKeys.MediaURL] as? String ?? ""
+        mediaURL = dic[JsonObjectKeys.MediaURL] as? String ?? "[No Media URL]"
         uniqueKey = dic[JsonObjectKeys.UniqueKey] as? String ?? ""
         objectID = dic[JsonObjectKeys.ObjectID] as? String ?? ""
     }

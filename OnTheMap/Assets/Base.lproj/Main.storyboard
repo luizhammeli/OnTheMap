@@ -123,32 +123,11 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZYU-w4-au4">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                             </mapView>
-                            <visualEffectView opaque="NO" alpha="0.90000000000000002" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="seW-Sc-dP5">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J8L-d3-8Yl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0pK-FJ-Gn6">
-                                            <rect key="frame" x="142" y="209" width="37" height="37"/>
-                                        </activityIndicatorView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="0pK-FJ-Gn6" firstAttribute="centerX" secondItem="J8L-d3-8Yl" secondAttribute="centerX" id="IJk-Te-UT8"/>
-                                        <constraint firstItem="0pK-FJ-Gn6" firstAttribute="centerY" secondItem="J8L-d3-8Yl" secondAttribute="centerY" id="N2S-Wy-qpe"/>
-                                    </constraints>
-                                </view>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="seW-Sc-dP5" firstAttribute="trailing" secondItem="ZYU-w4-au4" secondAttribute="trailing" id="19H-7d-Qc8"/>
                             <constraint firstItem="ZYU-w4-au4" firstAttribute="bottom" secondItem="oeX-n9-rlq" secondAttribute="bottom" id="7zd-5z-dUY"/>
-                            <constraint firstItem="seW-Sc-dP5" firstAttribute="top" secondItem="ZYU-w4-au4" secondAttribute="top" id="8af-DG-H5a"/>
-                            <constraint firstItem="seW-Sc-dP5" firstAttribute="bottom" secondItem="ZYU-w4-au4" secondAttribute="bottom" id="EBm-Gz-IGg"/>
                             <constraint firstItem="oeX-n9-rlq" firstAttribute="bottom" secondItem="ZYU-w4-au4" secondAttribute="bottom" id="V5t-Jy-H4J"/>
-                            <constraint firstItem="seW-Sc-dP5" firstAttribute="leading" secondItem="ZYU-w4-au4" secondAttribute="leading" id="hKr-26-7IY"/>
                             <constraint firstItem="ZYU-w4-au4" firstAttribute="top" secondItem="oeX-n9-rlq" secondAttribute="top" id="oKM-NS-wx1"/>
                             <constraint firstItem="ZYU-w4-au4" firstAttribute="leading" secondItem="oeX-n9-rlq" secondAttribute="leading" id="rgl-zh-0EU"/>
                             <constraint firstItem="ZYU-w4-au4" firstAttribute="trailing" secondItem="oeX-n9-rlq" secondAttribute="trailing" id="xOB-VS-dka"/>
@@ -157,9 +136,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icon_mapview-deselected" landscapeImage="icon_mapview-deselected" selectedImage="icon_mapview-selected" id="b7l-6M-gPY"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="0pK-FJ-Gn6" id="g9f-U9-3Gp"/>
                         <outlet property="mapView" destination="ZYU-w4-au4" id="oIg-3C-Iey"/>
-                        <outlet property="visualEffectView" destination="seW-Sc-dP5" id="TCZ-MK-q7x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jnT-AQ-vAG" userLabel="First Responder" sceneMemberID="firstResponder"/>

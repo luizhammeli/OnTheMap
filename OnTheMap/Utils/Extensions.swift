@@ -37,3 +37,15 @@ extension URL{
         return result
     }
 }
+
+extension UIViewController{
+    func getTabBarHeigh()->CGFloat{
+        if let tabBarController = self as? UITabBarController{
+            guard let controllers = tabBarController.viewControllers else {return 0}
+            guard let tabBarHeight = controllers[0].tabBarController?.tabBar.layer.frame.height else {return 0}
+            return tabBarHeight
+        }else{
+            return self.tabBarController?.tabBar.layer.frame.height ?? 0
+        }
+    }
+}

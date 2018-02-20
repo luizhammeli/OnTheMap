@@ -46,15 +46,15 @@ class AddLocationViewController: UIViewController {
     }
     
     func addNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showAddKeyboard), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideAddKeyboard), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    @objc func showKeyboard(_ notification:Notification){
+    @objc func showAddKeyboard(_ notification:Notification){
         self.view.frame.origin.y = -130
     }
     
-    @objc func hideKeyboard(){
+    @objc func hideAddKeyboard(){
         self.view.frame.origin.y = 0
     }
     
