@@ -32,10 +32,10 @@ struct Strings{
     static let LocationsTableViewControllerCellID = "cellID"
     
     //Alert Button
-    
     static let Dismiss = "Dismiss"
     static let Overwrite = "Overwrite"
     static let Cancel = "Cancel"
     
-    static let locationUpdateMessage = "User {user} Has Alredy Posted a Student Location. Would You Like To Overwrite Their Location?"
+    //RegEx
+    static let regEx = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
 }
