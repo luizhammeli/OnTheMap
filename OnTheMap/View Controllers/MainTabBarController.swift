@@ -12,8 +12,6 @@ class MainTabBarController: UITabBarController {
 
     static let updateMapViewControllerNotificationName = NSNotification.Name(rawValue: "updateMapViewController")
     
-    var selectedLocation: StudentInformation?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
