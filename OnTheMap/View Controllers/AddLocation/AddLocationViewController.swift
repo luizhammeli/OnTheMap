@@ -17,13 +17,16 @@ class AddLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
-        addNotification()
     }
     
     func setUpViews(){
         findLocationButton.layer.cornerRadius = 6
         locationTextField.setUpTextFieldPlaceHolder()
         urlTextField.setUpTextFieldPlaceHolder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        addNotification()
     }
 
     @IBAction func returnToMainViewController(_ sender: Any) {

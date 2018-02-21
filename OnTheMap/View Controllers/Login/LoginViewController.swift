@@ -27,6 +27,9 @@ class LoginViewController: UIViewController {
         emailTextField.setUpTextFieldPlaceHolder()
         passwordTextField.setUpTextFieldPlaceHolder()
         setUpSignUpButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         addNotifications()
     }
     

@@ -13,6 +13,7 @@ class ActivityIndicator {
     static var loader: UIVisualEffectView = {
         let visualEffect = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         visualEffect.translatesAutoresizingMaskIntoConstraints = false
+        visualEffect.alpha = 0.85
         return visualEffect
     }()
     

@@ -21,6 +21,7 @@ struct Strings{
     static let LoginErrorDefaultMessage = "Login Error"
     static let InvalidURLMessage = "Invalid URL"
     static let ErrorGetUserData = "Error to get user data"
+    static let GeoCodeError = "Could not Geocode the location"
     
     //Segue ID
     static let goToMainNavigationControllerSegueID = "goToMainNavigationController"

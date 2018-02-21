@@ -29,8 +29,8 @@ class FinishAddLocationViewController: UIViewController, MKMapViewDelegate {
         ActivityIndicator.showActivityIndicator(viewController: self)
         geoCoder.geocodeAddressString(stringLocation) { (placemarks, error) in
             ActivityIndicator.removeActivityIndicator()
-            if let error = error{
-                AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: error.localizedDescription, viewController: self, handler: { alert in self.navigationController?.popViewController(animated: true)})
+            if error != nil{
+                AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: Strings.GeoCodeError, viewController: self, handler: { alert in self.navigationController?.popViewController(animated: true)})
             }
             guard let placemarks = placemarks, let location = placemarks.first?.location else {return}
             self.setAnnotation(location)
