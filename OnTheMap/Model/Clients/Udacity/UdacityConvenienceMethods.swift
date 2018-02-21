@@ -57,7 +57,7 @@ extension UdacityClient{
     
     func getMapsData(completionHandler: @escaping (_ success: Bool, _ error: String?)->Void ){
         
-        let queryParameter = ["limit":"100"]
+        let queryParameter = ["limit":"100", "order":"-updatedAt"]
         UdacityClient.shared.taskForGETTMethod(UdacityConstants.ParseApiGetStudentsMethod, queryParameters: queryParameter) { (json, response, error) in
             
             if let errorMessage = error?.userInfo[NSLocalizedDescriptionKey] as? String{
@@ -68,7 +68,7 @@ extension UdacityClient{
             guard let response = response,  let json = json as? [String: Any], let results = json[UdacityResponseKeysConstants.Results] as? [[String: Any]] else {completionHandler(false, "Error to get data"); return}
             
             if(response.statusCode >= 200 && response.statusCode <= 299){
-                UdacityClient.shared.studentInformations = self.getLocationsArray(results)                
+                SharedData.shared.studentsInformations = self.getLocationsArray(results)                
                 completionHandler(true, nil)
             }else{
                 completionHandler(false, nil)

@@ -16,7 +16,7 @@ struct Strings{
     static let invalidLink = "Invalid Link"
     static let OK = "Ok"
     static let EmptyEmailOrPasswordMessage = "Empty Email or Password"
-    static let LocationNotFoundMessage = "Must Enter a Location"
+    static let LocationNotFoundMessage = "Empty Location or Url"
     static let LocationNotFoundTitleMessage = "Location Not Found"
     static let LoginErrorDefaultMessage = "Login Error"
     static let InvalidURLMessage = "Invalid URL"

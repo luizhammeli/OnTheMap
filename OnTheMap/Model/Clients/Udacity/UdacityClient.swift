@@ -12,7 +12,6 @@ class UdacityClient: NSObject {
 
     static let shared = UdacityClient()
     var user:User?
-    var studentInformations = [StudentInformation]()
     
     func taskForGETTMethod(_ method: String, stringHost: String?=nil, queryParameters: [String:String]?=nil,completionHandlerForGET: @escaping (_ result: AnyObject?, _ response: HTTPURLResponse?, _ error: NSError?) -> Void){
         
