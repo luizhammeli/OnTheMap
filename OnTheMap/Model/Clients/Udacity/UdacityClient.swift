@@ -73,10 +73,10 @@ class UdacityClient: NSObject {
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookieStorage = HTTPCookieStorage.shared
         for cookie in sharedCookieStorage.cookies! {
-            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+            if cookie.name == UdacityConstants.logOutCookieNameXSRF { xsrfCookie = cookie }
         }
         if let xsrfCookie = xsrfCookie {
-            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: UdacityConstants.logOutCookieNameXXSRF)
         }
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in

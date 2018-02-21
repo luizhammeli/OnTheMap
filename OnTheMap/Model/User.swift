@@ -15,7 +15,7 @@ struct User{
     var name: String = ""
     
     init(session: [String: Any], account: [String: Any]) {
-        id = account["key"] as? String ?? ""
-        sessionID = session["id"] as? String ?? ""
+        id = account[UdacityResponseKeysConstants.Key] as? String ?? ""
+        sessionID = session[UdacityResponseKeysConstants.ID] as? String ?? ""
     }
 }

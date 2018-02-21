@@ -65,7 +65,7 @@ extension UdacityClient{
                 return
             }
             
-            guard let response = response,  let json = json as? [String: Any], let results = json["results"] as? [[String: Any]] else {completionHandler(false, "Error to get data"); return}
+            guard let response = response,  let json = json as? [String: Any], let results = json[UdacityResponseKeysConstants.Results] as? [[String: Any]] else {completionHandler(false, "Error to get data"); return}
             
             if(response.statusCode >= 200 && response.statusCode <= 299){
                 UdacityClient.shared.studentInformations = self.getLocationsArray(results)                
@@ -84,10 +84,10 @@ extension UdacityClient{
                 completionHandler(false, errorMessage)
             }
             
-            guard let response = response,  let json = json as? [String: Any], let user = json["user"] as? [String: Any] else {completionHandler(false, Strings.ErrorGetUserData); return}
+            guard let response = response,  let json = json as? [String: Any], let user = json[UdacityResponseKeysConstants.User] as? [String: Any] else {completionHandler(false, Strings.ErrorGetUserData); return}
             
             if(response.statusCode >= 200 && response.statusCode <= 299){
-                UdacityClient.shared.user?.name = user["nickname"] as! String
+                UdacityClient.shared.user?.name = user[UdacityResponseKeysConstants.Nickname] as! String
                 completionHandler(true, nil)
             }else{
                 completionHandler(false, nil)
@@ -97,7 +97,7 @@ extension UdacityClient{
     
     func postLocationData(_ locationData: StudentInformation, mapString:String, completionHandler:  @escaping(_ success: Bool, _ error: String?)->Void){
         
-        let jsonBody = "{\"uniqueKey\": \"\(locationData.uniqueKey)\", \"firstName\": \"\(locationData.firstName)\", \"lastName\": \"\(locationData.lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(locationData.mediaURL)\",\"latitude\": \(locationData.latitude), \"longitude\": \(locationData.longitude)}"
+        let jsonBody = "{\"\(JsonObjectKeys.UniqueKey)\": \"\(locationData.uniqueKey)\", \"\(JsonObjectKeys.FirstName)\": \"\(locationData.firstName)\", \"\(JsonObjectKeys.LastName)\": \"\(locationData.lastName)\",\"\(JsonObjectKeys.MapString)\": \"\(mapString)\", \"\(JsonObjectKeys.MediaURL)\": \"\(locationData.mediaURL)\",\"\(JsonObjectKeys.Latitude)\": \(locationData.latitude), \"\(JsonObjectKeys.Longitude)\": \(locationData.longitude)}"
         
         let parameters = [UdacityConstants.ParseIDHeaderField: UdacityConstants.ParseApiID, UdacityConstants.ParseAPIKeyHeaderField: UdacityConstants.ParseAPIKey] as [String : AnyObject]
         
@@ -107,7 +107,7 @@ extension UdacityClient{
                 completionHandler(false, errorMessage)
             }
             
-            guard let response = response,  let json = json as? [String: Any], let _ = json["objectId"] as? String else {completionHandler(false, "Error to post user data"); return}
+            guard let response = response,  let json = json as? [String: Any], let _ = json[UdacityResponseKeysConstants.ObjectID] as? String else {completionHandler(false, "Error to post user data"); return}
             
             if(response.statusCode >= 200 && response.statusCode <= 299){
                 completionHandler(true, nil)

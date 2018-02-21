@@ -10,11 +10,11 @@ import UIKit
 
 class ActivityIndicator {
     
-    static var loader: UIVisualEffectView = {
-        let visualEffect = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-        visualEffect.translatesAutoresizingMaskIntoConstraints = false
-        visualEffect.alpha = 0.85
-        return visualEffect
+    static var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        return view
     }()
     
     static var activityIndicator: UIActivityIndicatorView = {
@@ -24,28 +24,27 @@ class ActivityIndicator {
     }()
     
     static func showActivityIndicator(viewController: UIViewController){
-        viewController.view.addSubview(loader)
-        loader.contentView.addSubview(activityIndicator)
+        viewController.view.addSubview(containerView)
+        viewController.view.addSubview(activityIndicator)
         var tabBarHeight:CGFloat = 0.0
         
         guard let navBarHeight = viewController.navigationController?.navigationBar.layer.frame.height else {return}
         tabBarHeight = viewController.getTabBarHeigh()
+        containerView.alpha = tabBarHeight == 0 ? 0.35 : 0.75
         
-        loader.topAnchor.constraint(equalTo: viewController.view.topAnchor, constant: navBarHeight).isActive = true
-        loader.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor, constant: -tabBarHeight).isActive = true
-        loader.leftAnchor.constraint(equalTo: viewController.view.leftAnchor).isActive = true
-        loader.rightAnchor.constraint(equalTo: viewController.view.rightAnchor).isActive = true
+        containerView.topAnchor.constraint(equalTo: viewController.view.topAnchor, constant: navBarHeight).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor, constant: -tabBarHeight).isActive = true
+        containerView.leftAnchor.constraint(equalTo: viewController.view.leftAnchor).isActive = true
+        containerView.rightAnchor.constraint(equalTo: viewController.view.rightAnchor).isActive = true
 
-        activityIndicator.centerXAnchor.constraint(equalTo: loader.contentView.centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: loader.contentView.centerYAnchor).isActive = true
-        activityIndicator.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        activityIndicator.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         
         activityIndicator.startAnimating()
     }
     
     static func removeActivityIndicator(){
-        loader.removeFromSuperview()
+        containerView.removeFromSuperview()
         activityIndicator.stopAnimating()
     }
 }

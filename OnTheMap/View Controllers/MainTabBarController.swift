@@ -26,12 +26,6 @@ class MainTabBarController: UITabBarController {
     }
     
     @IBAction func addLocation(_ sender: Any) {
-//        if (checkUserAddedLocation()){
-//            guard let location = self.selectedLocation else {return}
-//            let message = Strings.locationUpdateMessage.replacingOccurrences(of: "{user}", with: "\"\(location.firstName) \(location.lastName)\"")
-//            AlertController.showAlert(title: "", message: message, viewController: self, cancelAction: true, handler: goToUpdateLocation)
-//            return
-//        }
         self.performSegue(withIdentifier: Strings.goToAddLocationSegueID, sender: self)
     }
     
@@ -51,27 +45,6 @@ class MainTabBarController: UITabBarController {
             }
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == Strings.goToAddLocationSegueID){
-            if let _ = selectedLocation{
-                let _ = segue.destination as! AddLocationViewController
-                print("update")
-            }
-        }
-    }
-    
-//    private func checkUserAddedLocation()->Bool{
-//        selectedLocation = nil
-//        
-//        for location in UdacityClient.shared.studentInformations{
-//            if(UdacityClient.shared.user?.id == location.uniqueKey){
-//                self.selectedLocation = location
-//                return true
-//            }
-//        }
-//        return false
-//    }
     
     func goToUpdateLocation(alert: UIAlertAction){
         self.performSegue(withIdentifier: Strings.goToAddLocationSegueID, sender: self)

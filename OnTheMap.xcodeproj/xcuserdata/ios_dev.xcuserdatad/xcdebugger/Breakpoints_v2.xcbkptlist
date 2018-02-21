@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OnTheMap/View Controllers/AddLocation/FinishAddLocationViewController.swift"
-            timestampString = "540839638.500596"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "OnTheMap/View Controllers/MapViewController.swift"
             timestampString = "540391171.3700089"
             startingColumnNumber = "9223372036854775807"
@@ -42,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-            timestampString = "540839638.500707"
+            timestampString = "540919027.46056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -58,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-            timestampString = "540839638.500772"
+            timestampString = "540919027.461059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -74,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-            timestampString = "540839638.500833"
+            timestampString = "540919027.461338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -90,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-            timestampString = "540839638.500892"
+            timestampString = "540919027.461592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
@@ -106,12 +90,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ios_dev/Documents/Estudo/Udacity/OnTheMap/OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-                  timestampString = "540839638.631851"
+                  timestampString = "540907858.6017981"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
                   endingLineNumber = "91"
-                  offsetFromSymbolStart = "520">
+                  offsetFromSymbolStart = "699">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,12 +105,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ios_dev/Documents/Estudo/Udacity/OnTheMap/OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-                  timestampString = "540839638.633824"
+                  timestampString = "540907858.604291"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
                   endingLineNumber = "91"
-                  offsetFromSymbolStart = "1264">
+                  offsetFromSymbolStart = "1726">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -138,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-            timestampString = "540839638.500949"
+            timestampString = "540919027.461778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
@@ -154,12 +138,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ios_dev/Documents/Estudo/Udacity/OnTheMap/OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-                  timestampString = "540839638.638429"
+                  timestampString = "540907858.613447"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
                   endingLineNumber = "82"
-                  offsetFromSymbolStart = "1280">
+                  offsetFromSymbolStart = "1727">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -169,12 +153,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ios_dev/Documents/Estudo/Udacity/OnTheMap/OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-                  timestampString = "540839638.640192"
+                  timestampString = "540907858.615598"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "83"
                   endingLineNumber = "83"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "62">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -186,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/Model/Clients/Udacity/UdacityClient.swift"
-            timestampString = "540839638.501007"
+            timestampString = "540919027.462011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -202,11 +186,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/View Controllers/AddLocation/AddLocationViewController.swift"
-            timestampString = "540839638.50111"
+            timestampString = "540919027.462239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
+            landmarkName = "finishAddLocation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnTheMap/View Controllers/AddLocation/AddLocationViewController.swift"
+            timestampString = "540919027.462456"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "addNotification()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/View Controllers/AddLocation/AddLocationViewController.swift"
-            timestampString = "540839638.501412"
+            timestampString = "540919027.46261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "showAddKeyboard(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -233,13 +233,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OnTheMap/View Controllers/AddLocation/AddLocationViewController.swift"
-            timestampString = "540839638.501623"
+            filePath = "OnTheMap/Utils/ActivityIndicator.swift"
+            timestampString = "540919027.462846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "hideAddKeyboard()"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "showActivityIndicator(viewController:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

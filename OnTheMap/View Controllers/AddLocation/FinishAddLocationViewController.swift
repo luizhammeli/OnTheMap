@@ -28,12 +28,7 @@ class FinishAddLocationViewController: UIViewController, MKMapViewDelegate {
         let geoCoder = CLGeocoder()
         ActivityIndicator.showActivityIndicator(viewController: self)
         geoCoder.geocodeAddressString(stringLocation) { (placemarks, error) in
-            ActivityIndicator.removeActivityIndicator()
-            if error != nil{
-                AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: Strings.GeoCodeError, viewController: self, handler: { alert in self.navigationController?.popViewController(animated: true)})
-            }
-            guard let placemarks = placemarks, let location = placemarks.first?.location else {return}
-            self.setAnnotation(location)
+            self.geoCodeAndressCompletionHandler(placemarks, error)
         }   
     }
     
@@ -107,5 +102,14 @@ class FinishAddLocationViewController: UIViewController, MKMapViewDelegate {
                 UIApplication.shared.showUrl(stringUrl: stringUrl)
             }
         }
+    }
+    
+    func geoCodeAndressCompletionHandler(_ placemarks:[CLPlacemark]?, _ error:Error?){
+        ActivityIndicator.removeActivityIndicator()
+        if error != nil{
+            AlertController.showAlert(title: Strings.LocationNotFoundTitleMessage, message: Strings.GeoCodeError, viewController: self, handler: { alert in self.navigationController?.popViewController(animated: true)})
+        }
+        guard let placemarks = placemarks, let location = placemarks.first?.location else {return}
+        self.setAnnotation(location)
     }
 }

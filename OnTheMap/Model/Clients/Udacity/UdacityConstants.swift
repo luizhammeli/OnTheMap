@@ -26,6 +26,9 @@ struct UdacityConstants{
     static let ParseAPIKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
     static let ParseApiHost = "parse.udacity.com"
     static let ParseApiGetStudentsMethod = "/parse/classes/StudentLocation"
+    
+    static let logOutCookieNameXSRF = "XSRF-TOKEN"
+    static let logOutCookieNameXXSRF = "X-XSRF-TOKEN"
 }
 
 struct UdacityResponseKeysConstants{
@@ -37,6 +40,10 @@ struct UdacityResponseKeysConstants{
     static let Session = "session"
     static let Status = "status"
     static let Error = "error"
+    static let Results = "results"
+    static let User = "user"
+    static let Nickname = "nickname"
+    static let ObjectID = "objectId"
 }
 
 struct JsonObjectKeys{
@@ -47,4 +54,5 @@ struct JsonObjectKeys{
     static let MediaURL: String = "mediaURL"
     static let UniqueKey: String = "uniqueKey"
     static let ObjectID: String = "objectId"
+    static let MapString: String = "mapString"
 }

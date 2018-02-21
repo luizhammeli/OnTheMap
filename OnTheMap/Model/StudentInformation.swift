@@ -18,7 +18,7 @@ struct StudentInformation{
     let objectID: String
     
     init(_ dic: [String: Any]){
-        firstName = dic[JsonObjectKeys.FirstName] as? String ?? "[No First Name]"
+        firstName = dic[JsonObjectKeys.FirstName] as? String ?? "[No Name]"
         lastName = dic[JsonObjectKeys.LastName] as? String ?? ""
         latitude = dic[JsonObjectKeys.Latitude] as? Double ?? 0.0
         longitude = dic[JsonObjectKeys.Longitude] as? Double ?? 0.0
